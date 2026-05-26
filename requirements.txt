@@ -1,9 +1,6 @@
 --extra-index-url https://download.pytorch.org/whl/cpu
-torch==1.11.0+cpu
-torchvision==0.12.0+cpu
-fastai==1.0.61
-streamlit==1.10.0
-altair==4.2.0
+torch==2.9.0+cpu
+torchvision==0.20.0+cpu
+streamlit>=1.28.0
 Pillow
-numpy==1.21.6
-scipy==1.7.3
+numpy
