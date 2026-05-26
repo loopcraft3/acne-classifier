@@ -1,0 +1,7 @@
+altair==4.2.0
+fastai==1.0.61
+streamlit==1.10.0
+Pillow
+numpy==1.23.1
+torch==1.11.0
+torchvision==0.12.0

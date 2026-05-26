@@ -1,0 +1,7 @@
+.idea
+data/level_0/
+data/level_1/
+data/level_2/
+data/normal/
+__pycache__/
+*.pyc
