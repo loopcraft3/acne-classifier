@@ -1,71 +1,119 @@
-# Acne Classification with Deep Learning
-All packages and dependencies are included in the [requirements.txt](https://github.com/yinchuangsum/acne_demo/blob/master/requirements.txt). 
+# 🔬 AcneScan — AI Skin Analysis
 
-## Python Version
-- 3.7
+> Deep learning web app that classifies acne severity from facial images in seconds.
 
-## Introduction
-Without a doubt, most of teenages face acne problem. However, there isn't a guideline on how serious the acne is and what proper steps should be taken in order to cure the acne and prevent scars. Hence, acne classification is developed using deep learning. It is carried out using Resnet-18 model in this project. It is able to **classify acne seriousness** into:
+🌐 **Live App**: [acne-classifier.streamlit.app](https://acne-classifier.streamlit.app)
 
-  1. Normal
-  2. Level 0
-  3. Level 1
-  4. Level 2
+![Python](https://img.shields.io/badge/Python-3.9-blue?style=flat-square) ![Streamlit](https://img.shields.io/badge/Streamlit-deployed-red?style=flat-square) ![PyTorch](https://img.shields.io/badge/PyTorch-2.9-orange?style=flat-square) ![Accuracy](https://img.shields.io/badge/Accuracy-90%25-brightgreen?style=flat-square)
 
-as shown below:
+---
 
-<h4 align="center"> <img src="https://user-images.githubusercontent.com/22144223/172897371-43b293af-8c4a-46aa-bcaa-6e801dbdbed2.png" width="500"> </br>
+## 📌 About
 
-## Dataset
-250 HD images were being hand-picked for each classes from various internet sources. 
-<h4 align="center"> <img src="https://user-images.githubusercontent.com/22144223/149659973-5242ca18-e52c-491f-aabc-f1773b39cb21.png" width="500"> </br>
+Acne affects the majority of teenagers and young adults, yet most people lack guidance on how severe their condition is or what steps to take. AcneScan uses a ResNet-18 deep learning model to classify acne severity from a facial image into four categories — giving users instant, actionable feedback.
 
-## Annotation
-Data annotation is being carried out by separating dataset into 4 classes.
-<h4 align="center"> <img src="https://user-images.githubusercontent.com/22144223/149660036-e69fb470-9e30-4249-9b83-6a678866c157.png" width="500"> </br>
+---
 
-## Data Preprocessing
-To increase the size of the dataset for training, data preprocessing is being carried out which includes:
-- Flip:      		Horizontal, Vertical
-- 90° Rotate: 	Clockwise, Counter-Clockwise, Upside Down
-- Crop: 		    0% Minimum Zoom, 50% Maximum Zoom
-- Rotation: 	  Between -15° and +15°
-- Blur: 		    Up to 10px
-- Rotate:		    30 degree
+## 🧠 Model & Dataset
 
-## Installling Requirements
+| Detail | Info |
+|--------|------|
+| Architecture | ResNet-18 (transfer learning) |
+| Dataset | 250 HD images × 4 classes = 1,000 total |
+| Data source | Hand-picked from internet sources |
+| Accuracy | ~90% |
+| Input size | 224 × 224 px |
+
+### Classes
+
+| Class | Description |
+|-------|-------------|
+| 🟢 Normal | No significant acne |
+| 🟡 Level 0 | Mild acne |
+| 🟠 Level 1 | Moderate acne |
+| 🔴 Level 2 | Severe acne |
+
+### Data Augmentation
+Horizontal & vertical flips · 90° rotations · Random crop (0–50% zoom) · Rotation ±15° · Blur up to 10px
+
+---
+
+## 🖥️ App Features
+
+- Upload any facial photo (JPG/PNG)
+- Instant acne severity classification
+- Confidence score with visual progress bar
+- All 4 class probabilities shown in a grid
+- Tailored skincare advice per severity level
+- Clean dark-mode UI
+
+---
+
+## 🚀 Run Locally
+
+**1. Clone the repo**
+```bash
+git clone https://github.com/loopcraft3/acne-classifier.git
+cd acne-classifier
 ```
-pip install -r requirements.txt
+
+**2. Create environment (Anaconda Prompt)**
+```bash
+conda create -n acne-app python=3.9 -y
+conda activate acne-app
 ```
 
-## Run the code
+**3. Install dependencies**
+```bash
+pip install --extra-index-url https://download.pytorch.org/whl/cpu torch==2.9.0+cpu torchvision==0.24.0+cpu streamlit altair==4.2.0 Pillow numpy
 ```
+
+**4. Run**
+```bash
 streamlit run main.py
 ```
 
-## Results of AI Model
-The AI Model is able to achieve up to 90% accuracy by training with only 250 HD images from each classes. 
+Open `http://localhost:8501`
 
-Accuracy             |  Loss Function |  Confusion Matrix
-:-------------------------:|:-------------------------:|:-------------------------:
-<img src="https://user-images.githubusercontent.com/22144223/172899927-31fe9853-21f6-4562-bb02-7874ee5ead0f.png" width="400"> | <img src="https://user-images.githubusercontent.com/22144223/172898955-6d6467ab-6d6c-4d9e-a142-7be887d74401.png" width="400"> | <img src="https://user-images.githubusercontent.com/22144223/179527348-045a6f02-a2ca-44df-ac2d-cb550944d87b.png" width="400">
+---
 
+## 🗂️ Project Structure
 
+```
+acne-classifier/
+├── main.py                  # Streamlit app (UI + inference)
+├── requirements.txt         # Deployment dependencies
+├── runtime.txt              # Python version for Streamlit Cloud
+├── README.md
+└── data/
+    ├── models/
+    │   └── best_resnet.pth  # Trained model weights (~49MB)
+    ├── level_0/             # Training images
+    ├── level_1/
+    ├── level_2/
+    └── normal/
+```
 
-## Future Improvements
-1. Platform to discuss skin care products
-2. Cross geographical skin samples
-3. Develop smartphone app
-4. More detailed classifier
-5. Higher Accuracy
-6. Implement Object Detection
-7. Suggest Possible Treatments
-8. Consult Dermatologist Virtually
+---
 
-## Application
-Mobile App             |  Web App 
-:-------------------------:|:-------------------------:
-<img src="https://user-images.githubusercontent.com/22144223/182114469-9dd0d709-3fa4-4927-8496-0685c5097d36.png" width="400"> | <img src="https://user-images.githubusercontent.com/22144223/182114931-f444a831-0ed7-457c-9d23-cb1812095c33.png" width="900"> |
+## 🔮 Future Improvements
 
-## Additional Information
-Additional information about this project can be read [here](https://docs.google.com/presentation/d/1f4I75eh2MxlMGislCCR2iAQR7PfxG1FbuIr79Q8eg30/edit?usp=sharing).
+- [ ] Larger and more diverse dataset (cross-geographical skin samples)
+- [ ] Object detection to localise acne regions on the face
+- [ ] More granular severity levels
+- [ ] Treatment and product recommendations
+- [ ] Virtual dermatologist consultation feature
+- [ ] Native mobile app (iOS & Android)
+- [ ] Community platform for skincare discussions
+
+---
+
+## ⚠️ Disclaimer
+
+This tool is for informational purposes only and does not replace professional medical advice. Please consult a dermatologist for diagnosis and treatment.
+
+---
+
+## 📄 License
+
+MIT License — free to use and modify.
