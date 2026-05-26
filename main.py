@@ -247,7 +247,7 @@ def create_fastai_resnet18(num_classes=4):
 @st.cache_resource
 def load_model():
     model = create_fastai_resnet18(num_classes=4)
-    state = torch.load('./data/models/best_resnet.pth', map_location='cpu')
+    state = torch.load('./data/models/best_resnet.pth', map_location='cpu', weights_only=False)
     weights = state['model'] if 'model' in state else state
     model.load_state_dict(weights)
     model.eval()
